@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends 'trips/base.html' %}
+
+{% block content %}
+{% load app_tags %}
+{% load static %}
+
+<br>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div id="polaroid">
+                <div id="login-top" class="rounded-top">
+                    Login
+                    <div style="float:right; font-size: 80%; position: relative; top:+10px"><a href="#">Forgot password?</a></div>
+                </div>
+
+                <form method="post" action="{% url 'trips:login' %}">
+                {% csrf_token %}
+
+                <div id="login-line" class="input-group" >
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><img src="{% static "trips/images/user.ico" %}" style="height:25px"></img></div>
+                    </div>
+                    <!--<input id="login-box" type="text" class="form-control" name="username" value="" placeholder="username or email">-->
+                    <input id="{{ form.username.id_for_label }}" type="text" class="form-control" name="{{ form.username.html_name }}" value="" placeholder="username or email">
+                    {{ form.username.error }}
+                </div>
+                <div id="login-line" class="input-group" >
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><img src="{% static "trips/images/lock.svg" %}" style="height:25px"></img></div>
+                    </div>
+                    <!--<input id="login-box" type="text" class="form-control" name="username" value="" placeholder="username or email">-->
+                    <input id="{{ form.password.id_for_label }}" type="password" class="form-control" name="{{ form.password.html_name }}" value="" placeholder="password">
+                    {{ form.password.error }}
+                </div>
+
+                <div style="padding-top:20px" class="form-group">
+                    <!-- Button -->
+
+                    <div class="col-sm-12 controls">
+                        <input type="submit" class="btn btn-success" value="login"/>
+                        <input type="hidden" name="next" value="{{ next }}" />
+                        <!--<a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>-->
+                    </div>
+                </div>
+                </form>
+
+                <div class="form-group">
+                    <div class="col-md-12 control">
+                        <div style="border-top: 1px solid#888; padding-top:15px; padding-bottom:20px; font-size:85%" >
+                            Don't have an account!
+                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                            Sign Up Here
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                {% if form.errors %}
+                <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+
+                {% if next %}
+                    {% if user.is_authenticated %}
+                    <p>Your account doesn't have access to this page. To proceed,
+                    please login with an account that has access.</p>
+                    {% else %}
+                    <p>Please login to see this page.</p>
+                    {% endif %}
+                {% endif %}
+
+                <form method="post" action="{% url 'trips:login' %}">
+                {% csrf_token %}
+                <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+                </table>
+
+                <input type="submit" value="login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+
+
+                {# Assumes you setup the password_reset view in your URLconf #}
+                <p><a href="{% url 'trips:password_reset' %}">Lost password?</a></p>
+
+                -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+</body>
+</html>

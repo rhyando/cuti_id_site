@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="{% url 'trips:edit_trip_event' %}" method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form }}
+    <br>
+    {% endfor %}
+    <input type="submit" value="Submit" />
+</form>
+
+
+</body>
+</html>

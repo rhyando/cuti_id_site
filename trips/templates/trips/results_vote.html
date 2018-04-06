@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>{{ trip_event.destination }}</h1>
+
+{% load app_tags %}
+<ul>
+{% for choicevote in trip_event.choicevote|to_field_name %}
+    <li>{{ choicevote.name }} -- {{trip_event.choicevote|getattribute:choicevote.name}}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'trips:detail' trip_event.id %}">Vote again?</a>
+
+</body>
+</html>

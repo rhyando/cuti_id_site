@@ -1,0 +1,317 @@
+[
+{
+  "model": "trips.destination",
+  "pk": 1,
+  "fields": {
+    "destination": "Komodo",
+    "description": "",
+    "reg_date": "2018-01-19T03:53:16.879Z",
+    "views": 5
+  }
+},
+{
+  "model": "trips.destination",
+  "pk": 2,
+  "fields": {
+    "destination": "Lombok",
+    "description": "",
+    "reg_date": "2018-01-20T12:50:26.545Z",
+    "views": 9
+  }
+},
+{
+  "model": "trips.subdestination",
+  "pk": 1,
+  "fields": {
+    "pardestination": 1,
+    "subdestination": "Padar",
+    "description": "the best subdestination",
+    "reg_date": "2018-01-21T19:20:24Z",
+    "views": 0
+  }
+},
+{
+  "model": "trips.trip_event",
+  "pk": 1,
+  "fields": {
+    "trips_tittle": "Komodo January",
+    "start_date": "2018-01-26T00:00:00Z",
+    "end_date": "2018-01-23T00:00:00Z",
+    "pub_date": "2018-01-19T04:05:38Z",
+    "trip_owner": 6,
+    "file": "trip_media/komodo_tukangjalan_300.JPG",
+    "views": 17,
+    "trip_destination": [
+      1
+    ]
+  }
+},
+{
+  "model": "trips.trip_event",
+  "pk": 2,
+  "fields": {
+    "trips_tittle": "Komodo by Juara Trip",
+    "start_date": "2018-01-19T00:00:00Z",
+    "end_date": "2018-01-22T00:00:00Z",
+    "pub_date": "2018-01-19T04:09:05.820Z",
+    "trip_owner": 1,
+    "file": "trip_media/trip_media/Capture_qfJQwzT.JPG",
+    "views": 4,
+    "trip_destination": [
+      1
+    ]
+  }
+},
+{
+  "model": "trips.trip_event",
+  "pk": 3,
+  "fields": {
+    "trips_tittle": "Komodo with Folks",
+    "start_date": "2018-01-12T00:00:00Z",
+    "end_date": "2018-01-26T00:00:00Z",
+    "pub_date": "2018-01-19T10:51:54.096Z",
+    "trip_owner": 8,
+    "file": "trip_media/trip_media/Capture_TWNDlCO.JPG",
+    "views": 6,
+    "trip_destination": [
+      1
+    ]
+  }
+},
+{
+  "model": "trips.trip_event",
+  "pk": 4,
+  "fields": {
+    "trips_tittle": "Komodo Ah",
+    "start_date": "2018-01-09T00:00:00Z",
+    "end_date": "2018-02-02T00:00:00Z",
+    "pub_date": "2018-01-19T11:21:28Z",
+    "trip_owner": 6,
+    "file": "trip_media/Capture2.JPG",
+    "views": 24,
+    "trip_destination": [
+      1
+    ]
+  }
+},
+{
+  "model": "trips.trip_event",
+  "pk": 6,
+  "fields": {
+    "trips_tittle": "tes",
+    "start_date": "2018-01-12T00:00:00Z",
+    "end_date": "2018-01-26T00:00:00Z",
+    "pub_date": "2018-01-19T12:03:32Z",
+    "trip_owner": 6,
+    "file": "trip_media/trip_media/komodo_kakaban.JPG",
+    "views": 17,
+    "trip_destination": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "trips.trip_event",
+  "pk": 14,
+  "fields": {
+    "trips_tittle": "LOMBOKAH",
+    "start_date": "2018-02-09T00:00:00Z",
+    "end_date": "2018-02-17T00:00:00Z",
+    "pub_date": "2018-02-04T18:01:45.591Z",
+    "trip_owner": 1,
+    "file": "trip_media/komodo_tukangjalan_MEgyOqZ.JPG",
+    "views": 13,
+    "trip_destination": [
+      2
+    ]
+  }
+},
+{
+  "model": "trips.choice",
+  "pk": 1,
+  "fields": {
+    "trip": 6,
+    "choice_text": "emang bagus ?",
+    "votes": 1
+  }
+},
+{
+  "model": "trips.choicevote",
+  "pk": 1,
+  "fields": {
+    "vote_recommended": 0,
+    "vote_not_recommended": 0
+  }
+},
+{
+  "model": "trips.choicevote",
+  "pk": 2,
+  "fields": {
+    "vote_recommended": 0,
+    "vote_not_recommended": 0
+  }
+},
+{
+  "model": "trips.choicevote",
+  "pk": 3,
+  "fields": {
+    "vote_recommended": 0,
+    "vote_not_recommended": 0
+  }
+},
+{
+  "model": "trips.choicevote",
+  "pk": 4,
+  "fields": {
+    "vote_recommended": 0,
+    "vote_not_recommended": 0
+  }
+},
+{
+  "model": "trips.choicevote",
+  "pk": 6,
+  "fields": {
+    "vote_recommended": 0,
+    "vote_not_recommended": 2
+  }
+},
+{
+  "model": "trips.choicevote",
+  "pk": 14,
+  "fields": {
+    "vote_recommended": 0,
+    "vote_not_recommended": 0
+  }
+},
+{
+  "model": "trips.participant",
+  "pk": 1,
+  "fields": {
+    "trip_participant": 14,
+    "full_name": "Bolang",
+    "email": "bolang@gmail.com",
+    "gender": "M",
+    "reg_date": "2018-02-09T10:48:52.277Z"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "OPERATOR",
+    "permissions": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      28,
+      29,
+      30,
+      1,
+      2,
+      3
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$8wLYPRPnkrOe$3hKCrK9Fz8b79woAyFVcqh13Gq3V7nkFUKt48Y8m8p0=",
+    "last_login": "2018-02-22T07:17:03.578Z",
+    "is_superuser": true,
+    "username": "rhyando",
+    "first_name": "",
+    "last_name": "",
+    "email": "rhyando@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2018-01-04T06:18:18.121Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 22,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$zDeQlJkx44IB$k9n5LJWqidJH9il0cQj2nBc4+8k6L9Wh0+ydDarVJ3o=",
+    "last_login": "2018-02-04T03:37:15.106Z",
+    "is_superuser": false,
+    "username": "anggia",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-01-19T02:39:24.475Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 24,
+  "fields": {
+    "password": "pbkdf2_sha256$100000$cWw8RwHhcHaE$78lsNXeRWsKF2ejKtsanf9R2YjsH1WagUue6qyIcK3w=",
+    "last_login": "2018-01-19T10:49:11.170Z",
+    "is_superuser": false,
+    "username": "folks",
+    "first_name": "",
+    "last_name": "",
+    "email": "folks@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2018-01-19T10:49:10.502Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "trips.owner",
+  "pk": 1,
+  "fields": {
+    "owner": 1,
+    "bio": "",
+    "location": "",
+    "birth_date": "2016-12-13",
+    "reg_date": "2018-01-18T09:01:35Z",
+    "views": 0
+  }
+},
+{
+  "model": "trips.owner",
+  "pk": 6,
+  "fields": {
+    "owner": 22,
+    "bio": "",
+    "location": "",
+    "birth_date": "2018-01-01",
+    "reg_date": null,
+    "views": 0
+  }
+},
+{
+  "model": "trips.owner",
+  "pk": 8,
+  "fields": {
+    "owner": 24,
+    "bio": "",
+    "location": "",
+    "birth_date": "2018-01-02",
+    "reg_date": null,
+    "views": 0
+  }
+}
+]

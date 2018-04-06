@@ -1,0 +1,103 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>-->
+
+{% extends 'trips/base.html' %}
+
+{% block content %}
+
+<!--
+<li><a href="{% url 'trips:signup' %}">Signup</a></li>
+<li><a href="{% url 'trips:login' %}">Login</a></li>
+<li><a href="{% url 'trips:logout' %}">Logout</a></li>
+-->
+
+<!--
+{% for dest in destination_list %}
+    <ul>
+        <li><a href="{% url 'trips:dest' trip_event_destination=dest %}">{{ dest.destination }}</a></li>
+    </ul>
+
+    {% for trip in dest.trip_event_set.all %}
+
+        <li><a href="{% url 'trips:detail' trip_event_id=trip.id %}">{{ trip.trips_tittle }}</a></li>
+
+    {% endfor %}
+
+{% endfor %}
+-->
+
+<!--
+{% if latest_trip_event_list %}
+
+    <li><a href="{% url 'trips:add_trip_event' %}">Additional Trip Input</a></li>
+    <li><a href="{% url 'trips:edit_trip_event' %}">Edit Trip Input</a></li>
+
+    <ul>
+    {% for trip in latest_trip_event_list %}
+        <li><a href="{% url 'trips:detail' trip_event_id=trip.id %}">{{ trip.trips_tittle }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+
+    <li><a href="{% url 'trips:add_trip_event' %}">Additional Trip Input</a></li>
+    <li><a href="{% url 'trips:edit_trip_event' %}">Edit Trip Input</a></li>
+
+
+    <p>No event are available.</p>
+{% endif %}
+-->
+
+<br>
+
+{% load app_tags %}
+<div class="container">
+    {% for trip in latest_trip_event_list %}
+        {% if forloop.first %}<div class="row">{% endif %}
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <div id="polaroid">
+                    <img id="thumb-post" class="img-fluid rounded" src="{{ trip.file.url }}"></img>
+                    <div id="undertheimg">
+                        <i><a href="{% url 'trips:detail' trip_event_id=trip.id %}">{{ trip.trips_tittle|upper }}</a></i>
+                    </div>
+                    	<ul id="info">
+                            <li>DURATION = {{trip.end_date|subtract_days:trip.start_date}}D /
+                                {{trip.end_date|subtract_days:trip.start_date|subtract:1}}N</li>
+                            <li>PROVIDER = {{trip.trip_owner|title}}</li>
+                            <li>LOCATION =
+                                            {% for dest in trip.trip_destination.all %}
+                                                {% if forloop.last %}
+                                                    <a href="{% url 'trips:dest' trip_event_destination=dest %}">
+                                                        {{ dest.destination }}</a>
+                                                {% else %}
+                                                    <a href="{% url 'trips:dest' trip_event_destination=dest %}">
+                                                        {{ dest.destination }},</a>
+                                                {% endif %}
+                                            {% endfor %}</li>
+                            <li>DATE = {{trip.start_date|date:"D, d M Y"}} - {{trip.end_date|date:"D, d M Y"}}</li>
+                            <li># PARTICIPANT = {{trip.participant_set.count}}</li>
+                        </ul>
+                </div>
+            </div>
+        <!--{% if forloop.counter|divisibleby:3 %}</div><br><div class="row">{% endif %}-->
+        <!--{% if forloop.last %}</div>{% endif %}-->
+    {% endfor %}
+</div>
+<br>
+
+{% endblock %}
+
+
+
+
+
+
+
+<!--
+
+</body>
+</html>-->

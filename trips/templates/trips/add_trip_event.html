@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action="{% url 'trips:add_trip_event' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p}}
+    <!--<p><label for="id_file">File:</label> <input type="file" name="file" required id="id_file" /></p>-->
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+<br>
+
+<a href="{% url 'trips:add_destination' %}?next={{ request.path|urlencode }} ">Additional Destination</a>
+
+<script>
+
+    $(document).ready(function() {
+      /////// 1. Select image with file input
+      $('input').on('change', function() {
+        resizeImages(this.files[0], function(dataUrl) {
+
+          // image is now a resized dataURL.  This can be sent up to the server using ajax where it can be recompiled into an image and stored.
+           ////// 5 Upload to server as dataUrl
+           uploadResizedImages(dataUrl);
+        });
+      });
+
+      function resizeImages(file, complete) {
+        // read file as dataUrl
+        ////////  2. Read the file as a data Url
+        var reader = new FileReader();
+          // file read
+          reader.onload = function(e) {
+              // create img to store data url
+              ////// 3 - 1 Create image object for canvas to use
+              var img = new Image();
+              img.onload = function() {
+               /////////// 3-2 send image object to function for manipulation
+                complete(resizeInCanvas(img));
+              };
+              img.src = e.target.result;
+            }
+            // read file
+          reader.readAsDataURL(file);
+
+      }
+
+    });
+
+    function resizeInCanvas(img){
+      /////////  3-3 manipulate image
+        var perferedWidth = 300;
+      var ratio = perferedWidth / img.width;
+      var canvas = $("<canvas>")[0];
+      canvas.width = img.width * ratio;
+      canvas.height = img.height * ratio;
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0,0,canvas.width, canvas.height);
+      //////////4. export as dataUrl
+      return canvas.toDataURL();
+    }
+
+</script>
+
+</body>
+</html>

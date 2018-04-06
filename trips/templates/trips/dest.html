@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<b>The most visited destination in 2017</b>
+<br>
+{{dest_event}}
+{{dest_event.reg_date}}
+<br>
+{{dest_event_obj.reg_date}}
+<br>
+
+{% for dest_sub in dest_event_obj.subdestination_set.all %}
+    <a href="{% url 'trips:dest_sub' trip_event_subdestination=dest_sub %}">
+    {{ dest_sub.subdestination }}</a></li>
+{% endfor %}
+
+</body>
+</html>

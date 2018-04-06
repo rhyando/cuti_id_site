@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{trip_event}}
+<!--{{trip_event.participant_set.all}}-->
+<br>
+<form action="{% url 'trips:add_participant' trip_event.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form.as_p }}
+    <br>
+    {% endfor %}
+    <input type="submit" value="Submit" />
+</form>
+
+
+</body>
+</html>

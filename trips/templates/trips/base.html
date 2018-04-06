@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+    <!--META TAG WAS USED FOR GOOGLE SEARCH AND ALL THE HTML INFORMATION-->
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Hege Refsnes">
+    <meta name="robots" content="nofollow" />
+    <meta charset="UTF-8">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% load static %}
+
+    <title>embulan</title>
+    <!--LINK TO CSS NAMED RHYANDO-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    &lt;!&ndash; Optional theme &ndash;&gt;
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    &lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" type="text/css" href="{% static 'trips/rhyando.css' %}" />
+
+    <link rel="shortcut icon" href="{% static "trips/images/ico1.ico" %}">
+
+</head>
+
+<body style="background-color:#FAFAFA">
+
+<!--------------------------------------HEADER-------------------------------------->
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light font-weight-bold" style="background-color:#F0F0F0; font-family:Trebuchet MS;">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand" href="{% url 'trips:index' %}"><img src="{% static "trips/images/ico1.ico" %}" style="float:left;height:25px;width:auto;text-align:right;margin:0px;padding:0px 30px 0px 0px;"></img></a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'trips:index' %}">TRIP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="labs.html">SHUTTLE</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT</a></li>
+                </ul>
+                {% if user.is_authenticated %}
+                    <img src="{% static "trips/images/user.ico" %}" style="float:left;height:35px;width:auto;text-align:right;margin:0px;padding:0px 5px 0px 0px;"></img>
+                    {{ user.get_username }}
+                    <input class="btn btn-outline-success btn-sm my-0 mr-sm-2 ml-sm-3" type="button" class="btn btn-info" value="Logout"
+                        onclick="location.href = '{% url 'trips:logout' %}?next={{request.path}}';">
+                {% else %}
+                    <input class="btn btn-outline-success btn-sm my-0 mr-sm-2" type="button" class="btn btn-info" value="Register"
+                        onclick="location.href = '{% url 'trips:signup' %}?next={{request.path}}';">
+                    <input class="btn btn-outline-success btn-sm my-0 mr-sm-2" type="button" class="btn btn-info" value="Login"
+                        onclick="location.href = '{% url 'trips:login' %}?next={{request.path}}';">
+                {% endif %}
+
+                <!--
+                <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'trips:login' %}">
+                    {% csrf_token %}
+                    <input class="form-control form-control-sm mr-sm-1" type="text" placeholder="Login">{{ form.username }}
+                    <input id="form-navbartwo" class="form-control form-control-sm mr-sm-3" type="text" class="span2" placeholder="Password">
+                    <button class="btn btn-outline-success btn-sm my-1 mr-sm-2" type="submit">Login</button>
+                </form>
+                -->
+
+            </div>
+        </div>
+    </nav>
+
+<!--------------------------------------SECTION_ONE-------------------------------------->
+
+    {% block content %}
+    {% endblock %}
+
+<!--------------------------------------FOOTER-------------------------------------->
+<!--
+
+    <footer>
+
+        <a href="index.html"><img src="img/footer/1473947698_circle-social-facebook.ico" style="height:25px;width:auto;text-align:right;margin:0px;position:fixed;right:0"></a>
+        <a href="index.html"><img src="img/footer/1473948106_circle-social-instagram.ico" style="height:25px;width:auto;text-align:right;margin:0px;position:fixed;right:25px"></a>
+        <a href="index.html"><img src="img/footer/1473948109_circle-social-twitter.ico" style="height:25px;width:auto;text-align:right;margin:0px;position:fixed;right:50px"></a>
+        <div id="copyright"></div>
+
+    </footer>
+-->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/hover.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends 'trips/base.html' %}
+
+{% block content %}
+
+<h1>{{ trip_event.trip_event_trips_tittle }}</h1>
+
+{% load static %}
+<ul>
+
+    <li>{{ trip_event.trips_tittle }}</li>
+    <li>
+        {% if trip_event.file %}
+            <img src="{{ trip_event.file.url }}">
+        {% endif %}
+    <li>{{ trip_event.start_date|date:'l, j F Y' }}</li>
+    <li>{{ trip_event.end_date|date:'l, j F Y'  }}</li>
+    <li>
+    {% for dest in trip_event.trip_destination.all %}
+        <a href="{% url 'trips:dest' trip_event_destination=dest %}">
+        <!--{{ trip_event.get_trip_destination_display }}-->
+        {{ dest.destination }}</a></li>
+    {% endfor %}
+    <li><a href="{% url 'trips:get_name' %}">name</a></li>
+    <li>{{ trip_event.views }}</li>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'trips:vote' trip_event.id %}" method="post">
+{% csrf_token %}
+{% for choice in trip_event.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
+
+{% load app_tags %}
+<!--{{trip_event}}-->
+<!--<br>-->
+<!--{{trip_event.choice_set}}-->
+<!--<br>-->
+<!--{{trip_event.choicevote.vote_recommended}}-->
+<!--<br>-->
+<!--{{trip_event.choicevote|getattribute:"vote_recommended" }}-->
+<!--<br>-->
+<!--{{trip_event.choicevote|to_field_name}}-->
+
+<form action="{% url 'trips:votetrip' trip_event.id %}" method="post">
+{% csrf_token %}
+{% for choicevote in trip_event.choicevote|to_field_name %}
+    <input type="radio" name="choicevote" id="choicevote{{ forloop.counter }}" value="{{ forloop.counter }}" />
+    <label for="choicevote{{ forloop.counter }}">{{ choicevote.name }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote Choice" />
+</form>
+
+</ul>
+
+<br>
+<li><a href="{% url 'trips:add_participant' trip_event.id %}">Register</a></li>
+<br>
+<li><a href="{% url 'trips:edit_participant' trip_event.id %}">Edit Register</a></li>
+
+{% endblock %}
+
+</body>
+</html>
